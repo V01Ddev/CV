@@ -1,0 +1,516 @@
+% ============================================================================
+%  MASTER CV -- Mohammed Aljomaily
+%  NEVER SENT TO ANYONE. This is the superset archive; variants are cut from it.
+%
+%  TAGS   [HW] hardware/embedded variant   [SW] software variant   [BOTH]
+%  RAW:   source detail -- not CV copy. Mine this when you've forgotten.
+%  CHECK: call this out in an interview if asked.
+%
+%  Anything not substantiated by ~/CODING, ~/Work, or your own accounts is
+%  quarantined in the UNRESOLVED section at the bottom. Do not ship from there
+%  until you've confirmed it.
+%
+%  Build:  pdflatex master.tex      (expect ~4-5 pages -- that's correct)
+% ============================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+% fontenc + lmodern are functional, not cosmetic. T1 gives correct glyphs and
+% clean text extraction (matters for ATS parsing); lmodern avoids bitmap fonts
+% under T1. Everything else decorative has been stripped: no titlesec, no
+% colour, no rules under headings -- plain article-class \section*.
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.4cm]{geometry}
+\usepackage{enumitem}
+% hyperref is here purely to make contact links clickable. hidelinks keeps the
+% styling plain: no blue, no boxes, no underline. It looks identical to before.
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.1em,itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+
+% Discourage hyphenation so extracted text stays keyword-clean.
+\hyphenpenalty=1200
+\exhyphenpenalty=1200
+\emergencystretch=1.5em
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Mohammed Aljomaily}}\\[5pt]
+    % [BOTH] headline swaps per variant -- see SUMMARIES below
+    Computer Engineering Student \textbar{} Embedded Systems, PCB Design \& RF\\[5pt]
+    Beylikd\"uz\"u, Istanbul, Turkey \textbar{} +90 535 273 6199 \textbar{} +974 6614 0463\\[3pt]
+    \href{mailto:mohammedaljomaily06@gmail.com}{mohammedaljomaily06@gmail.com} \textbar{} \href{https://v01d.dev}{v01d.dev} \textbar{} \href{https://github.com/V01Ddev}{github.com/V01Ddev}
+\end{center}
+
+% ---------------------------------------------------------------------------
+%  SUMMARIES -- pick one per variant
+% ---------------------------------------------------------------------------
+
+\section*{Summary}
+
+\subsection*{[HW] Hardware / Embedded}
+% [HW] LEAD WITH THIS for Baykar, embedded, electronics, UAV roles.
+Computer Engineering student with hands-on hardware R\&D spanning PCB design and
+home fabrication, embedded firmware, and RF systems. Built and configured a
+5-inch FPV quadcopter, designed and hand-etched a dual-transceiver ESP32 RF board
+in KiCad, and developed RC aircraft and flight-telemetry hardware. Fluent in
+C/C++ on ESP32 and ESP8266, with working knowledge of KiCad, FreeCAD, and bench
+instrumentation. Complements self-directed hardware work with 14 months of
+professional software engineering delivering production AI systems for
+enterprise clients.
+
+\subsection*{[SW] Software / Cloud}
+% [SW] Your existing positioning. Keep it alive -- it's the one that pays rent.
+Software Engineer with hands-on experience designing and deploying cloud-native,
+AI-driven systems on Microsoft Azure. Built and operated production media
+pipelines covering transcription, translation, and automated document generation
+for enterprise clients, using event-driven Python services across Azure Container
+Apps, Functions, Cosmos DB, and Cognitive Services.
+
+% ---------------------------------------------------------------------------
+%  HARDWARE & EMBEDDED PROJECTS
+% ---------------------------------------------------------------------------
+
+\section*{Hardware \& Embedded Projects}
+
+\subsection*{5-Inch FPV Quadcopter \hfill 2026}
+% [HW] -- LEAD WITH THIS for Baykar, UAV, drones, defence. It's a UAV built for
+% [HW] -- a UAV company; nothing else on your CV is as directly on-target.
+% RAW: Mario 5 frame. Mamba MK4 F722 flight controller (STM32F722).
+% RAW: F40 V2 motors. DJI O4 Lite video system. DJI Goggles N3.
+% RAW: 6S 1700 mAh. RadioMaster Pocket (EdgeTX) + ExpressLRS 2.4 GHz link.
+% RAW: Physical build -- no repo, hence it never showed up in the file scans.
+% RAW: Also: custom EdgeTX sound pack, own FreeCAD/STL stick ends for the radio.
+% RAW: GyroFlow post-stabilisation, GoPro HERO7 Black with ND filters.
+% CHECK: You wrote this aircraft's LaTeX preflight checklist (REV 01SEP26).
+% CHECK: Owning a written ground-check procedure for your own airframe is
+% CHECK: operational discipline -- for a UAV employer that's a strong signal.
+% TODO: confirm the year; adjust if this build spans 2025.
+Assembled, configured and tuned a 5-inch FPV quadcopter built on a Mario 5 frame
+with a Mamba MK4 F722 flight controller, F40 V2 motors, and DJI O4 Lite video on
+6S. Configured Betaflight and the ExpressLRS 2.4\,GHz control link, and authored
+the aircraft's written preflight checklist.
+
+\subsection*{Dual-Transceiver ESP32 RF Board \hfill 2026}
+% [HW]
+% RAW: ESP32 DevKit V1 (DOIT). 2x nRF24L01+PA+LNA, one per SPI bus (HSPI+VSPI),
+% RAW: deliberately staggered sweeps. 2x 100uF bulk caps. SSD1306 0.96" I2C OLED
+% RAW: @0x3C using his own published footprint. 2x test points. Optional TP4056
+% RAW: charging + JST PH 2.0 + 3.7V Li-Ion.
+% RAW: KiCad 9/10. 2-layer, 1.6mm. 8 footprints, 56 pads, 134 track segments,
+% RAW: 10 vias, 4 zones. Board 64.14 x 77.47 mm. 40+ timestamped backups.
+% RAW: NO gerbers, NO BOM, NO drill files -- deliberate, because it was made at home.
+% RAW: Copper-layer SVGs exported at A4 (297 x 210 mm) = the etch artwork.
+% RAW: Commit: "made VIAs bigger for home etching and fixed all DRC errors"
+% RAW: Commit: "Dumb move to make it two layer. Nearly impossible to make at home"
+% RAW: Silkscreen reads WWW.V01D.DEV. Photographed 2026-06-05 (Downloads/PCB/).
+% CHECK: The two-layer decision is a good story -- you chose it, discovered it was
+% CHECK: near-impossible to etch at home, then redesigned the vias larger and
+% CHECK: respun. That's an engineering iteration narrative, not a line item.
+Designed and hand-fabricated a 2-layer ESP32 RF board in KiCad, carrying two
+nRF24L01+PA+LNA transceivers on independent SPI buses. Authored custom
+footprints, routed all DRC-clean, and reworked via geometry specifically for
+home etching after finding the original two-layer layout impractical to produce.
+% NOTE: firmware is adapted, NOT original -- do not claim otherwise.
+Integrated open-source firmware for full compatibility with the upstream
+ESP32-BlueJammer project rather than rolling a custom stack.
+
+\subsection*{Flight Telemetry \& Attitude Indicator \hfill 2026}
+% [HW]
+% RAW: MS5611 / GY-63 barometer (I2C 0x77) + MPU6050 IMU (8G / 500deg/s / 21Hz band).
+% RAW: Complementary filter alpha = 0.98. Accel angles via atan2. Altitude via
+% RAW: 44330*(1-(P/101325)^0.1903). ~50 Hz, 115200 baud.
+% RAW: Ground station: Python 3.13 + PySide6 + Qt QML, 263-line HorizonIndicator.qml.
+% RAW: Full KiCad PCB, 2-layer, 29.50 x 52.00 mm. Migrated Pygame -> QML mid-project.
+Built an ESP32 telemetry system pairing an MS5611 barometer with an MPU6050 IMU,
+fusing both through a complementary filter into a live attitude and altitude
+stream. Wrote the desktop ground station in Python and Qt QML, rendering a
+real-time artificial horizon from serial telemetry.
+
+\subsection*{Discrete Transistor Logic Gates \hfill 2026}
+% [HW]
+% RAW: 7x PN2222A NPN BJT (TO-92), RTL topology, 10K base resistors,
+% RAW: 1K + 470 current limiting, 4x blue LEDs, 7x 6mm tactile switches.
+% RAW: Four gate topologies on one board: AND, NOT, OR, NAND.
+% RAW: KiCad, 2-layer, fully routed, 30 footprints, 84 pads, 119 segments,
+% RAW: GND plane, 84.33 x 95.00 mm. 14 backup revisions.
+% RAW: Earlier separate iteration used 2N2219 (TO-39) -- Documents/LogicGates/.
+% RAW: Last commit: "fixed GND plane, need to change minimums" (mid-cleanup).
+% RAW: First board fabricated; still being debugged as of your last update.
+% CHECK: Say "fabricated a first revision, currently debugging" -- NOT "working".
+% CHECK: Have the fault description ready; debugging your own board is a better
+% CHECK: interview story than a board that worked first try.
+Designed and fabricated a resistor--transistor logic (RTL) board implementing
+AND, NOT, OR and NAND gates from discrete PN2222A transistors, to understand
+gate-level behaviour below the abstraction layer. Schematic capture, fully
+routed 2-layer PCB with ground plane, and a first fabricated revision currently
+under debug.
+
+\subsection*{RC Aircraft \& Radio Link \hfill 2025--2026}
+% [HW]
+% RAW: FCF-1 fixed-wing: 9mm x 12mm x 650 carbon fiber rod, 2x 600mm wings,
+% RAW: 300mm horizontal + 250mm vertical stabilizer, NACA 63412 airfoil
+% RAW: (naca63412.dat imported to FreeCAD). 14 FCStd files, 16 exported STLs.
+% RAW: Servo mounts, pushrods, control horns, aileron hinges, wing mount,
+% RAW: tail connector, motor mount -- all modelled. Foam + carbon + 3D print hybrid.
+% RAW: Commit: "semi-flying plane..."
+% RAW: Simple-Glider: 33 commits (most-iterated hardware project). Wingspan 100cm,
+% RAW: fuselage 50cm. ESP32 TX -> ESP8266 RX over ESP-NOW. Dedicated BuildGuide.md.
+% RAW: parametrics in constants.py derived from FliteTest ratios.
+% RAW: Esp32RC: 4 analog joysticks -> 4 servos, ESP-NOW, 20Hz loop,
+% RAW: 3-second loss-of-signal failsafe recentring all channels.
+% CHECK: You tried nRF24 first (commit "attempt at nRF24 with the esp32"), found
+% CHECK: it didn't work for you, and migrated to ESP-NOW. Then you used nRF24
+% CHECK: successfully a year later on the RF board. That arc is worth telling.
+Designed and built RC aircraft from first principles: airframe layout, carbon
+spar integration, servo and control-linkage geometry, and 3D-printed structural
+parts modelled in FreeCAD. Wrote the radio link firmware: a 4-channel ESP-NOW
+transmitter and receiver pair with a 20\,Hz control loop and a failsafe that
+recentres all channels on signal loss.
+
+\subsection*{ESP32 BLE HID Controller \hfill 2026}
+% [HW]
+% RAW: ESP32 + BleGamepad (BLE HID), 3 buttons (GPIO 33/25/32), PS1/PC dual keymap,
+% RAW: stableRead() debounce. Own KiCad schematic + PCB, own FCStd enclosure + 2 STLs.
+% RAW: Reuses his own ESP32-DEVKIT-V1 library.
+Designed a BLE HID gamepad on ESP32 with a custom KiCad schematic, PCB, and
+3D-printed enclosure, including debounced input handling and dual host keymaps.
+
+\subsection*{Published KiCad Library: SSD1306 OLED \hfill 2026}
+% [HW]
+% RAW: kicad-ssd1306-oled-library. Native KiCad 9 .kicad_sym + .kicad_mod,
+% RAW: converted from pforrmi/KiCad-SSD1306-128x64 (CC BY-NC-SA 4.0).
+% RAW: Commit: "fix: add copyright notices and license attribution for CC BY-NC-SA
+% RAW: compliance" -- he handled derivative-work licensing correctly.
+% RAW: 4 THT pads at 2.54mm pitch, courtyard/Fab/silkscreen layers, 27.3 x 27.8mm.
+% RAW: NOT a dead repo -- this exact footprint is used on the RF board PCB.
+% CHECK: Licence handling on a derivative work is rare in a student portfolio.
+% CHECK: If they ask about working with other people's IP, this is your answer.
+Published a KiCad symbol and footprint library for the SSD1306 0.96" I2C OLED
+module, converted to native KiCad 9 format with correct CC BY-NC-SA attribution.
+Adopted into my own board designs.
+
+\subsection*{Hardware Fabrication \& Mechanical}
+% [HW]
+% RAW: Toner transfer / home etching. Purpose-built TonerTransferTool.FCStd + STL
+% RAW: (40 x 40 x 10 mm, 7636 triangles) at ~/3D_Modeling/Toner Transfer Tool/.
+% RAW: NOTE: "toner transfer" appears ONLY in that folder name -- his repo prose
+% RAW: consistently says "home etching". His own account is toner transfer.
+% RAW: Chose home fabrication after costing JLCPCB/PCBWay -- shipping to Turkey
+% RAW: plus local service made it uneconomical. Real constraint-driven decision.
+% RAW: FreeCAD + BambuStudio + Ender 3 (FDM). PLA/PETG/TPU. 100% infill on
+% RAW: functional parts, 3-5 iterations for fit.
+% RAW: FlySky i6X USB power mod -- 3D-printed micro-USB adapter in the battery
+% RAW: compartment, 28 AWG, soldered and heat-set into PLA, reversible by design.
+% RAW: WRITTEN UP AND PUBLISHED on v01d.dev. Photo evidence IMG_1594-1599.
+% CHECK: "I didn't want to modify it in any way that couldn't be reverted to its
+% CHECK: original state" -- that constraint is why the design is good. Say it.
+Fabricates PCBs at home end-to-end: artwork generation, transfer, etching,
+drilling, and assembly: designing for the process with enlarged vias and
+single-sided-friendly layouts. Models and prints enclosures and mechanical parts
+in FreeCAD and FDM.\newline
+% [HW] Published a hardware modification write-up (FlySky i6X USB power),
+% [HW] documented with reasoning, measurements, and a reversible-by-design constraint.
+
+% ---------------------------------------------------------------------------
+%  EXPERIENCE
+% ---------------------------------------------------------------------------
+
+\section*{Experience}
+% [BOTH] -- this section is real and verifiable. Client is Al Jazeera Media
+% [BOTH] -- Network (remotes: aljazeera/tno-ai-wasef-*, resource group
+% [BOTH] -- rg-ajmn-tno-ai-network). Naming it is far stronger than "AJ WASAF".
+% BOTH: NOTE the product is spelled "wasef" throughout the codebase, not "wasaf".
+% RAW: Official start date 5 March 2025 (per Mohammed). Earliest commit in any
+% RAW: repo is 2025-03-09; the old CV said February, which matched nothing.
+\textbf{Software Engineering Intern -- Emerging Technologies Department}\\
+\textit{Applab.qa, Doha, Qatar (client: Al Jazeera Media Network)} \hfill \textit{March 2025 -- April 2026}\\
+\textit{Full-time internship, continuing part-time remote alongside university}
+
+\begin{itemize}
+    % RAW: 122 of 153 commits on the APIs repo (80%), 81 of 132 on the background
+    % RAW: worker, 16 of 82 on the projects API. Authored the initial commit.
+    % RAW: Primary author of routes/video.py (33 KB, 51 touches, 14 endpoints).
+    \item Primary author of the backend for Al Jazeera's AI video editing and
+    multilingual translation platform, delivering the API service, the
+    asynchronous job worker, and the projects API.
+    % RAW: Quart 0.20 + quart-schema + Hypercorn, Python 3.13, Docker.
+    % RAW: API Container App (ingress on) -> Cosmos action doc -> Azure Storage
+    % RAW: Queue (aj-video-queue) -> ingress-disabled worker container polling
+    % RAW: with visibility_timeout=600 -> dispatch -> Cosmos status update.
+    \item Architected an event-driven pipeline across Azure Container Apps and
+    Storage Queues. A Quart/Hypercorn API writes a state document to Cosmos DB,
+    which a decoupled worker container consumes and dispatches.
+    % RAW: Azure Cognitive Services Speech: fast transcription endpoint
+    % RAW: (api-version 2024-11-15) with disfluencyTaggingEnabled=true, and the
+    % RAW: Video Translation API, which HE migrated to api-version 2025-05-20.
+    % RAW: Azure OpenAI: Whisper (verbose_json, word-level timestamps) with
+    % RAW: GPT-4o fallback. Whisper for any locale outside the fast-transcribe set.
+    \item Integrated Azure Cognitive Services Speech fast transcription and the
+    Video Translation API with Azure OpenAI Whisper and GPT-4o, supporting
+    transcription across 14 locales with automatic fallback for the rest.
+    % RAW: Silenced/filler-word removal: batched transcript word arrays
+    % RAW: (chunk_size=10), Azure OpenAI structured output via Pydantic
+    % RAW: MatchingArrays, temperature=0, asyncio.Semaphore(5),
+    % RAW: asyncio.gather(return_exceptions=True).
+    \item Implemented an LLM word-removal feature that strips silence and
+    disfluencies from transcripts using structured output schemas and bounded
+    async concurrency.
+    % RAW: Poison handling: dequeue_count > 5 -> poisoned-messages queue.
+    % RAW: 40 attempts x 10s sleep retry loop on translation iteration.
+    % RAW: add_action_log() at every state transition. Action statuses:
+    % RAW: queued/in_progress/completed/failed/timeout.
+    \item Built failure handling for a long-running distributed pipeline:
+    poison-message routing, bounded retry with backoff on the translation
+    lifecycle, and per-action state logging for observability.
+    % RAW: WebVTT alignment using half-open interval arithmetic so adjacent cues
+    % RAW: that merely touch at a boundary don't merge. He wrote the explaining comment.
+    % RAW: Fixed: repeated first sentence after translation, empty output blob on
+    % RAW: second iteration, bracketed lists in translation output, source vtt
+    % RAW: only updating on first iteration.
+    \item Wrote subtitle alignment and generation logic handling multi-iteration
+    translation, resolving boundary-merging and repeat-content defects found in
+    production output.
+    % RAW: Autoscale min 1 / max 10, cooldown 300s, HTTP scaler at 4 concurrent
+    % RAW: requests, queue scaler, 500 MB upload cap. Blob layout partitioned by
+    % RAW: {user_id}/{project_id}/. Cosmos partition key /userId.
+    \item Configured container autoscaling and storage layout for variable
+    upload volume, including a 500\,MB per-file limit and per-tenant blob
+    partitioning.
+    \item Worked across Azure Functions, App Service, and API Management (APIM)
+    alongside Semantic Kernel.
+\end{itemize}
+
+\vspace{2pt}
+\textbf{Key Projects}
+\begin{itemize}
+    % [BOTH] Confirmed by Mohammed: built from scratch, but on a work laptop he
+    % [BOTH] no longer has, so no code is retained. Described from his account.
+    % RAW: FastAPI + Semantic Kernel. Azure AI Search vector search for semantic
+    % RAW: retrieval. Conversation-history layer written from scratch.
+    \item \textbf{General Authority of Customs (GAC)}: Built an AI chatbot from
+    scratch on FastAPI and Semantic Kernel, with Azure AI Search vector search
+    for semantic retrieval and a custom conversation history layer.
+    % RAW: In-process Python file I/O, no external API. Roughly 30 ms per
+    % RAW: document, his own measurement, where the team had assumed an external
+    % RAW: API was required.
+    % NOTE: no commit trail in the IPAQ repo for the DocxGen code (authored by
+    % NOTE: Mohammad Momin / Rahul Sriramoju). He states the work is his, done on
+    % NOTE: a different machine. Be ready to describe the implementation in detail.
+    \item \textbf{Invest Qatar}: Built the backend converting AI-generated
+    structured JSON into formatted DOCX files in-process with Python file I/O,
+    at roughly 30\,ms per document, avoiding the external API dependency the team
+    had assumed was required.
+\end{itemize}
+
+% ---------------------------------------------------------------------------
+%  SOFTWARE & AI PROJECTS   [SW]
+% ---------------------------------------------------------------------------
+
+\section*{Software \& AI Projects}
+
+\subsection*{University RAG Chatbot \hfill 2025}
+% [SW] -- Your verifiable retrieval/vector-search work. (GAC is confirmed real
+% [SW] -- but has no code retained, so this is the one a reviewer can check.)
+% RAW: IAU = Istanbul Aydin University (matches his CV education line).
+% RAW: 22/22 commits his, built 2025-12-18 -> 2025-12-21 (four days).
+% RAW: FastAPI + LangChain + MongoDBAtlasVectorSearch (cosine, k=2) with
+% RAW: OpenAIEmbeddings text-embedding-3-large. Agent = create_agent gpt-4o-mini.
+% RAW: Page-level documents (no chunking), 4-message conversation window.
+% RAW: Incremental ingest via SHA-256 content hashing with insert/update/delete diff.
+% RAW: ~385 lines Python, 3 endpoints, Dockerfile + compose.
+% RAW: Companion scraper: Selenium + trafilatura, 184 documents / 694,635 chars
+% RAW: from a 200-entry sitemap, with Cloudflare handling.
+% RAW: Frontend: Next.js 16 + React 19, 13 merged PRs across a 3-person team.
+Built a retrieval-augmented chatbot answering questions over university
+documentation, using LangChain with OpenAI embeddings and MongoDB Atlas Vector
+Search, and an incremental ingest pipeline that content-hashes each page to
+insert, update, or delete only what changed. Companion Selenium scraper
+extracted 184 documents (694,635 characters) from a 200-entry sitemap.
+
+\subsection*{TIPOT: PDF Organising Tool \hfill 2024--2026}
+% [SW]
+% RAW: 40 of 44 commits his; 4 by Ben Mercer <benmercer76@btinternet.com>,
+% RAW: an outside contributor who submitted and merged a PR.
+% RAW: Flask + PyMuPDF, Dockerised (python:3.12-slim), docker-compose.
+% CHECK: This is your proof of real open-source collaboration -- an outside
+% CHECK: contributor found it, used it, and sent a merged PR. Most students
+% CHECK: have nothing like this. Lead with it in software interviews.
+Built and maintained a Dockerised Flask web application for PDF page
+reordering and merging. Received and merged a pull request from an external
+contributor.
+
+\subsection*{Aircraft Engine Trend Analysis \hfill 2026}
+% [SW] -- genuinely differentiated. Almost nobody applying has this.
+% RAW: 5/5 commits his. Jupyter notebook, 29 cells, 1.5 MB.
+% RAW: Boeing 747 / 767 / 777 / 787 engine trend data. Columns: Altitude-CR,
+% RAW: EGT-CR (exhaust gas temp), Fuel Flow-CR, N1 Speed-CR, N1 Vibe Fwd/Rear-CR,
+% RAW: N2 Vibe Rear-CR. Altitude-vs-time, fuel/EGT correlation, vibration
+% RAW: analysis, 3-D date-coloured plots, fleet cross-model comparison.
+% RAW: pandas 3.0, numpy 2.4.2, matplotlib 3.10.8. Notebook records findings:
+% RAW: "This could be due to: Gradual wear / Sensor bias / Thermal drift."
+% CHECK: This is your aviation interest made quantitative. For a UAV company,
+% CHECK: EGT/vibration/fuel-flow trend analysis is directly adjacent work.
+Analysed multi-model turbine engine trend data (747/767/777/787) in Python,
+correlating exhaust gas temperature, fuel flow, and N1/N2 vibration signatures
+across the fleet to characterise degradation patterns.
+
+\subsection*{Additional}
+% [SW]
+\begin{itemize}
+    \item \textbf{deltastack.dev}: Student engineering team landing site; Next.js 16, React 19, Tailwind v4. Sole author.
+    \item \textbf{v01d.dev}: Personal site and technical blog, hand-built with Hugo and maintained since 2021 across 113 commits.
+    \item \textbf{table2csv}: Converts university course-schedule HTML into printable and Google Calendar CSV; Selenium with a manual-paste fallback for bot-blocked pages.
+    \item \textbf{LAN Scanner}: Threaded network ping-sweep implemented in both C++ and Python.
+\end{itemize}
+
+% ---------------------------------------------------------------------------
+%  TECHNICAL SKILLS
+% ---------------------------------------------------------------------------
+
+\section*{Technical Skills}
+
+\subsection*{[HW] Hardware / Embedded ordering}
+% [HW]
+\begin{itemize}
+    \item \textbf{Hardware:} PCB design \& layout, schematic capture, custom footprint authoring, home PCB fabrication (toner transfer, etching, drilling), through-hole assembly and rework, 3D printing (FDM), mechanical design
+    \item \textbf{EDA \& CAD:} KiCad (9/10), FreeCAD, BambuStudio
+    \item \textbf{Embedded:} ESP32, ESP8266, Arduino framework, SPI, I\textsuperscript{2}C, UART, PWM/servo, ADC
+    \item \textbf{RF \& Protocols:} nRF24L01+PA+LNA, ESP-NOW, ExpressLRS, Bluetooth/BLE, 2.4\,GHz ISM band planning, IR
+    \item \textbf{Languages:} C/C++ (embedded), Python, Go (Golang), C (Linux)
+    \item \textbf{Instrumentation:} multimeter, soldering and rework station, serial telemetry and plotting
+    \item \textbf{Software:} Docker, Linux (Debian/Arch), Azure, Git
+\end{itemize}
+
+\subsection*{[SW] Software / Cloud ordering}
+% [SW]
+\begin{itemize}
+    \item \textbf{Languages:} Python, Go (Golang), C, TypeScript
+    \item \textbf{Cloud \& Infrastructure:} Azure Container Apps, Function Apps, App Service, API Management, Blob Storage, Queue Storage, Cosmos DB, Docker, Linux (Debian/Arch), VPS hosting
+    \item \textbf{AI \& Frameworks:} Azure OpenAI, Azure Cognitive Services (Speech \& NLP), Semantic Kernel, LangChain, FastAPI, Quart, MongoDB Atlas Vector Search
+    \item \textbf{Data:} Cosmos DB, MongoDB, Postgres, pandas
+    \item \textbf{Hardware:} PCB design \& fabrication, ESP32/ESP8266, KiCad, FreeCAD, 3D printing
+\end{itemize}
+% RAW: Deliberately verified-toolchain-only. NO ESP-IDF, NO PlatformIO,
+% RAW: NO MicroPython, NO Altium, NO EasyEDA anywhere in his repos. One stale
+% RAW: README claims an ESP-IDF CMakeLists.txt that does not exist -- do not
+% RAW: let that become a CV claim.
+
+% ---------------------------------------------------------------------------
+%  EDUCATION / CERTS / VOLUNTEERING
+% ---------------------------------------------------------------------------
+
+\section*{Education}
+% BOTH: confirm expected graduation year -- currently reads open-ended.
+\textbf{B.Sc. Computer Engineering}: Istanbul Aydin University, Istanbul, Turkey \hfill 2025 -- Present\\
+IGCSE \& A-Levels: Physics, Mathematics, Computer Science
+
+\section*{Certifications}
+PCEP: Certified Entry-Level Python Programmer \hfill 2026\\
+Programming with Google Go Specialization: University of California, Irvine (Coursera)
+
+\section*{Volunteering}
+Model United Nations: Head of Press \& Press Team (2018, 2022) \textbar{} TEDxYouth@NIA: Volunteer \& Photographer (2018, 2019) \textbar{} Showdown Gaming Tournament: Volunteer (2022)
+
+% ---------------------------------------------------------------------------
+%  ARCHIVE -- real work, but not worth a line on a one-page CV.
+%  Kept so you don't rediscover it next year. Promote to the body if a
+%  specific application makes one of these relevant.
+% ---------------------------------------------------------------------------
+
+\section*{Archive: real, but not currently worth a CV line}
+
+\begin{itemize}
+    \item \textbf{SDR++ ATC frequency databases}: 7 curated JSON sets for real control towers (Doha 18 bookmarks, Istanbul, Bahrain, Dubai, UAE), verified against live airband monitoring. \textit{[HW] Promote if applying to anything aviation/defence.}
+    \item \textbf{ESP32 IR repeater} (2022): earliest hardware project; record/replay IR with Arduino-IRremote.
+    \item \textbf{ESP-NOW alarm system} (2023): two ESP32 nodes, motion sensing, deliberate low-power transmission tuning.
+    \item \textbf{Custom KiCad worksheet template}: drawing-sheet with A/1 zone reference grid and parametric title block.
+    \item \textbf{Animated logo}: Manim-rendered brand animation.
+    \item \textbf{YouTube Data API tooling}: OAuth client pulling video statistics and livestream details.
+    \item \textbf{Computer vision}: OpenCV + pyzbar real-time barcode reader.
+    \item \textbf{Server administration}: nginx/Apache deployment scripts, restic backups, v4l2loopback virtual camera, 121 commits of Linux and VPS configuration.
+    \item \textbf{QNB bank statement processing}: pandas ETL with strict date parsing and mismatch reporting.
+    \item \textbf{Hardware reverse-engineering notes}: nmap sweep and Wireshark ARP analysis of a consumer smart doorbell, with the goal of microcontroller-triggering it. \textit{Recon only; protocol was not cracked.}
+\end{itemize}
+
+% ---------------------------------------------------------------------------
+%  UNRESOLVED -- DO NOT COPY INTO ANY VARIANT UNTIL CONFIRMED
+% ---------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------
+%  A NOTE ON THE APPLAB WORK
+%
+%  The Applab / Al Jazeera job was done on a company laptop Mohammed no longer
+%  has. Azure Functions, App Service, API Management, portal configuration,
+%  search indexes: none of that leaves a trace on a personal machine, and it
+%  never would. Absence here is expected, not suspicious. His account is the
+%  source of truth for this job, and everything he has described is listed.
+%
+%  The repo scan was useful for FINDING material -- the Al Jazeera commit
+%  history, the real architecture, the real numbers that replaced the vague
+%  original bullets. It was never a standard he had to meet.
+% ---------------------------------------------------------------------------
+
+% ---------------------------------------------------------------------------
+%  RESOLVED -- investigated, decision made. Recorded so you don't re-litigate
+%  or accidentally re-add any of these later.
+% ---------------------------------------------------------------------------
+
+\section*{Resolved: keep out of every variant}
+
+\begin{itemize}
+    \item \textbf{5-inch FPV drone}: confirmed real; parts supplied by you and
+    now written into Hardware Projects above. Not on disk because it's a physical
+    build.
+
+    \item \textbf{\texttt{randevus} / Saatse\c{c}}: \emph{not yours}; a
+    friend's project you were checking. Excluded entirely. Do not list it, and
+    do not let a recruiter find it in your GitHub activity and ask.
+
+    \item \textbf{Six cloned repositories}: \texttt{odysseus} (0/1600 commits),
+    \texttt{jobsync} (0/431), \texttt{CNN-for-Airfoil} (0/26),
+    \texttt{kicad-symbols} (0/8338), \texttt{Deep-Flow-Prediction} (2/35,
+    packaging only), and \texttt{Casio/PrizmSdkDocker}. All clean clones of other
+    people's work. None are on the CV; keep it that way. Their headline metrics
+    (e.g.\ CNN-for-Airfoil's ``MSE 0.36'' and ``5000$\times$ faster than CFD'')
+    are the upstream authors' published results, not runs you performed.
+
+    \item \textbf{General Authority of Customs (GAC)}: confirmed real. Built from
+    scratch on FastAPI and Semantic Kernel, with Azure AI Search vector search
+    for semantic retrieval and a hand-written conversation history layer. No code
+    retained; done on a work laptop he no longer has. Written into Key Projects above.
+
+    \item \textbf{National Planning Committee (NPC) Hackathon}: dropped. His
+    account: ``just did random maintenance.'' The old CV line claiming he
+    ``developed an AI chatbot using Azure Semantic Kernel'' was inflated to the
+    point of being false. Not on any variant.
+
+    \item \textbf{Invest Qatar DOCX generator}: his work, confirmed. Now written
+    into Key Projects with the $\sim$30\,ms figure he supplied. \emph{Interview
+    prep caveat:} the IPAQ repo's DocxGen code carries commits from Mohammad
+    Momin and Rahul Sriramoju, not from any of his identities, and he says it was
+    done on a work machine. Be ready to describe the implementation in detail.
+
+    \item \textbf{``Python and Ethical Hacking Training''}: removed from the
+    CV; no issuer, date, or link.
+
+    \item \textbf{SAT 1290}: removed. Irrelevant next to a B.Sc. and paid
+    engineering experience, and below the threshold where it helps.
+\end{itemize}
+
+% ---------------------------------------------------------------------------
+%  HOUSEKEEPING -- not CV content, but fix before you send a GitHub link to a
+%  defence contractor.
+% ---------------------------------------------------------------------------
+%  * github.com/V01Ddev hosts MALWARE/ -- functional credential-stealing code
+%    (keylogger, yagmail-based exfiltrator, file encryptor). Make it private.
+%  * DISCORD_BOTS command names are profanity-laden. Consider archiving.
+%  * A live YouTube API key is committed in "youtube api/main.py" -- rotate it.
+%  * ~/Work retains a live-looking Azure AD JWT and plaintext credentials in
+%    several .env files. You've left that company; rotate or delete.
+
+\end{document}

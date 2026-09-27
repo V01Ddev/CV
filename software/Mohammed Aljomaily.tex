@@ -1,0 +1,103 @@
+% ============================================================================
+%  SOFTWARE / CLOUD VARIANT -- cut from ../master.tex
+%  All content here is substantiated by ~/CODING, ~/Work, or Mohammed's account.
+%  Source of truth is ../master.tex. If you change a fact here, change it there.
+% ============================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.4cm]{geometry}
+\usepackage{enumitem}
+% hyperref is here purely to make contact links clickable. hidelinks keeps the
+% styling plain: no blue, no boxes, no underline. It looks identical to before.
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.1em,itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+
+\hyphenpenalty=1200
+\exhyphenpenalty=1200
+\emergencystretch=1.5em
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Mohammed Aljomaily}}\\[5pt]
+    Software Engineer \textbar{} AI \& Cloud Technologies\\[5pt]
+    Beylikd\"uz\"u, Istanbul, Turkey \textbar{} +90 535 273 6199 \textbar{} +974 6614 0463\\[3pt]
+    \href{mailto:mohammedaljomaily06@gmail.com}{mohammedaljomaily06@gmail.com} \textbar{} \href{https://v01d.dev}{v01d.dev} \textbar{} \href{https://github.com/V01Ddev}{github.com/V01Ddev}
+\end{center}
+
+\section*{Professional Summary}
+Software Engineer specializing in cloud-native, AI-driven systems on Microsoft
+Azure. Built and operated production media pipelines covering transcription,
+translation, and automated document generation for enterprise clients, using
+event-driven Python services across Azure Container Apps, Cosmos DB, and
+Cognitive Services.
+
+\section*{Experience}
+\textbf{Software Engineering Intern -- Emerging Technologies Department}\\
+\textit{Applab.qa, Doha, Qatar (client: Al Jazeera Media Network)} \hfill \textit{March 2025 -- April 2026}
+
+\begin{itemize}
+    \item Primary author of the backend for Al Jazeera's AI video editing and
+    multilingual translation platform, delivering the API service, the
+    asynchronous job worker, and the projects API.
+    \item Architected an event-driven pipeline across Azure Container Apps and
+    Storage Queues, with a decoupled worker consuming queued work against
+    Cosmos DB state.
+    \item Built failure handling for a long-running distributed pipeline:
+    poison-message routing, bounded retry with backoff, and per-action state logging.
+    \item Integrated Azure Cognitive Services Speech and Azure OpenAI, supporting
+    transcription and translation across 14 locales.
+    \item Worked across Azure Functions, App Service, and API Management (APIM)
+    alongside Semantic Kernel.
+\end{itemize}
+
+\vspace{2pt}
+\textbf{Key Projects}
+\begin{itemize}
+    \item \textbf{General Authority of Customs}: Built an AI chatbot from scratch
+    on FastAPI and Semantic Kernel, with Azure AI Search vector search for
+    semantic retrieval and a custom conversation history layer.
+    \item \textbf{Invest Qatar}: Built the backend converting AI-generated
+    structured JSON into formatted DOCX files in-process with Python file I/O, at
+    roughly 30\,ms per document, avoiding the external API dependency the team had
+    assumed was required.
+\end{itemize}
+
+\section*{Projects}
+\begin{itemize}
+    \item \textbf{University RAG Chatbot}: Retrieval-augmented chatbot over
+    university documentation using LangChain, OpenAI embeddings, and MongoDB Atlas
+    Vector Search, with an incremental ingest pipeline that content-hashes each
+    page to insert, update, or delete only what changed. Companion Selenium
+    scraper extracted 184 documents from a 200-entry sitemap.
+    \item \textbf{TIPOT, PDF Organising Tool}: Dockerised Flask application for
+    PDF page reordering and merging; received and merged a pull request from an
+    external contributor.
+    \item \textbf{Aircraft Engine Trend Analysis}: Analysed multi-model turbine
+    engine trend data (747/767/777/787) in Python, correlating exhaust gas
+    temperature, fuel flow, and N1/N2 vibration signatures across the fleet.
+\end{itemize}
+
+\section*{Technical Skills}
+\textbf{Languages:} Python, Go (Golang), C (Linux), TypeScript\\
+\textbf{Cloud \& Infrastructure:} Docker, Linux (Debian/Arch), Azure Container Apps, Function Apps, App Service, API Management, Blob Storage, Queue Storage, Cosmos DB\\
+\textbf{AI \& Frameworks:} Azure OpenAI, Azure Cognitive Services (Speech \& NLP), Semantic Kernel, LangChain, FastAPI, Quart, MongoDB Atlas Vector Search\\
+\textbf{Data:} Cosmos DB, MongoDB, Postgres, pandas\\
+\textbf{Hardware:} PCB design and fabrication, ESP32/ESP8266, KiCad, FreeCAD, 3D printing
+
+\section*{Education \& Certifications}
+\textbf{B.Sc. Computer Engineering} -- Istanbul Aydin University, Istanbul, Turkey \hfill 2025 -- Present\\
+IGCSE \& A-Levels: Physics, Mathematics, Computer Science\\
+PCEP: Certified Entry-Level Python Programmer \hfill 2026\\
+Programming with Google Go Specialization -- University of California, Irvine (Coursera)
+
+% Volunteering (MUN Head of Press 2018/2022, TEDxYouth@NIA, Showdown Gaming) was
+% cut to hold this to one page. It's 4-8 years old and pre-professional.
+
+\end{document}

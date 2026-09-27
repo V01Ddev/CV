@@ -1,0 +1,106 @@
+% ============================================================================
+%  HARDWARE / EMBEDDED VARIANT -- cut from ../master.tex
+%  Targets: Baykar, embedded systems, electronics design, UAV, defence.
+%  Leads with hardware, C in the skills front line, software demoted to support.
+%
+%  Source of truth is ../master.tex. If you change a fact here, change it there.
+% ============================================================================
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.4cm]{geometry}
+\usepackage{enumitem}
+% hyperref is here purely to make contact links clickable. hidelinks keeps the
+% styling plain: no blue, no boxes, no underline. It looks identical to before.
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.1em,itemsep=0.5pt,topsep=1pt,parsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+
+\hyphenpenalty=1200
+\exhyphenpenalty=1200
+\emergencystretch=1.5em
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Mohammed Aljomaily}}\\[5pt]
+    Computer Engineering Student \textbar{} Embedded Systems, PCB Design \& RF\\[5pt]
+    Beylikd\"uz\"u, Istanbul, Turkey \textbar{} +90 535 273 6199 \textbar{} +974 6614 0463\\[3pt]
+    \href{mailto:mohammedaljomaily06@gmail.com}{mohammedaljomaily06@gmail.com} \textbar{} \href{https://v01d.dev}{v01d.dev} \textbar{} \href{https://github.com/V01Ddev}{github.com/V01Ddev}
+\end{center}
+
+\section*{Summary}
+Computer Engineering student with hands-on hardware R\&D across PCB design and
+home fabrication, embedded firmware, and RF systems. Built and configured a
+5-inch FPV quadcopter, designed and hand-etched a dual-transceiver ESP32 RF board
+in KiCad, and developed RC aircraft and flight-telemetry hardware. Fluent in
+C/C++ on ESP32 and ESP8266, with 14 months of professional engineering
+experience shipping production systems for enterprise clients.
+
+\section*{Hardware \& Embedded Projects}
+
+\begin{itemize}
+    \item \textbf{5-Inch FPV Quadcopter}: Assembled, configured and tuned a
+    5-inch quadcopter (Mario 5 frame, Mamba MK4 F722 flight controller, F40 V2
+    motors, DJI O4 Lite video, 6S). Configured Betaflight and an ExpressLRS
+    2.4\,GHz control link, and authored the aircraft's written preflight checklist.
+
+    \item \textbf{Dual-Transceiver ESP32 RF Board}: Designed and hand-fabricated
+    a 2-layer KiCad board carrying two nRF24L01+PA+LNA transceivers on
+    independent SPI buses. Authored custom footprints and reworked via geometry
+    for home etching after finding the original layout impractical to produce.
+
+    \item \textbf{Flight Telemetry \& Attitude Indicator}: Built an ESP32 system
+    fusing an MS5611 barometer and MPU6050 IMU through a complementary filter,
+    with a Python and Qt QML ground station rendering a live artificial horizon.
+
+    \item \textbf{Discrete Transistor Logic Gates}: Designed and fabricated a
+    resistor-transistor logic (RTL) board with AND, NOT, OR and NAND gates built
+    from discrete PN2222A transistors, to work below the abstraction layer.
+    Fully routed 2-layer board; first revision under debug.
+
+    \item \textbf{RC Aircraft \& Radio Link}: Designed and built RC aircraft from
+    first principles: airframe layout, carbon spar integration, servo geometry,
+    and 3D-printed parts in FreeCAD. Wrote 4-channel ESP-NOW firmware with a
+    signal-loss failsafe.
+
+    \item \textbf{Published KiCad Library}: KiCad 9 symbol and footprint library
+    for the SSD1306 OLED, with correct CC BY-NC-SA attribution; adopted into my
+    own board designs.
+\end{itemize}
+
+\section*{Experience}
+\textbf{Software Engineering Intern -- Emerging Technologies Department}\\
+\textit{Applab.qa, Doha, Qatar (client: Al Jazeera Media Network)} \hfill \textit{March 2025 -- April 2026}
+
+\begin{itemize}
+    \item Primary author of the backend for Al Jazeera's AI video editing and
+    multilingual translation platform, delivering the API service, the
+    asynchronous job worker, and the projects API.
+    \item Architected an event-driven pipeline across Azure Container Apps and
+    Storage Queues, with a decoupled worker consuming queued work against
+    Cosmos DB state.
+    \item Built failure handling for a long-running distributed pipeline:
+    poison-message routing, bounded retry with backoff, and per-action state logging.
+    \item Integrated Azure Cognitive Services Speech and Azure OpenAI, supporting
+    transcription and translation across 14 locales.
+\end{itemize}
+
+\section*{Technical Skills}
+\textbf{Hardware:} PCB design \& layout, schematic capture, custom footprints, home fabrication (toner transfer, etching, drilling), through-hole assembly, FDM 3D printing; KiCad 9/10, FreeCAD, BambuStudio\\
+\textbf{Embedded:} ESP32, ESP8266, Arduino framework, SPI, I\textsuperscript{2}C, UART, PWM/servo, ADC\\
+\textbf{RF \& Protocols:} nRF24L01+PA+LNA, ESP-NOW, ExpressLRS, Bluetooth/BLE, 2.4\,GHz ISM, IR\\
+\textbf{Languages:} C/C++ (embedded), Python, Go (Golang), C (Linux)\\
+\textbf{Software:} Azure, Docker, Linux (Debian/Arch), Git
+
+\section*{Education \& Certifications}
+\textbf{B.Sc. Computer Engineering} -- Istanbul Aydin University, Istanbul, Turkey \hfill 2025 -- Present\\
+IGCSE \& A-Levels: Physics, Mathematics, Computer Science\\
+PCEP: Certified Entry-Level Python Programmer \hfill 2026\\
+Programming with Google Go Specialization -- University of California, Irvine (Coursera)
+
+\end{document}

@@ -1,1 +1,8 @@
+# LaTeX build artefacts -- variants compile in their own directories now
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
 *.synctex.gz
