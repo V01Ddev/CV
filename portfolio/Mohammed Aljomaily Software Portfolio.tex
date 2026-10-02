@@ -1,0 +1,162 @@
+% ============================================================================
+%  SOFTWARE PORTFOLIO
+%  Software projects only. See also:
+%    Mohammed Aljomaily Hardware Portfolio.tex
+%    Mohammed Aljomaily General Portfolio.tex   (both)
+%    Mohammed Aljomaily Baykar Portfolio.tex    (hardware-led, for Baykar)
+%
+%  Build from inside portfolio/ so the img/ paths resolve:
+%      pdflatex "Mohammed Aljomaily Software Portfolio.tex"
+% ============================================================================
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{2pt}
+\setlength{\parskip}{5pt}
+\pagestyle{empty}
+\hyphenpenalty=1200
+\exhyphenpenalty=1200
+\emergencystretch=1.5em
+
+\newcommand{\entry}[2]{%
+  \vspace{6pt}%
+  {\Large\bfseries #1}\hfill{\itshape\small #2}\par
+  \vspace{3pt}\hrule\vspace{4pt}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Mohammed Aljomaily}}\\[3pt]
+    {\large Software Portfolio}\\[6pt]
+    {\small Software Engineer \textbar{} Backend, Cloud \& Applied AI}\\[3pt]
+    {\small Beylikd\"uz\"u, Istanbul, Turkey \textbar{} +90 535 273 6199 \textbar{}
+    \href{mailto:mohammedaljomaily06@gmail.com}{mohammedaljomaily06@gmail.com}}\\[2pt]
+    {\small \href{https://v01d.dev}{v01d.dev} \textbar{} \href{https://github.com/V01Ddev}{github.com/V01Ddev}}
+\end{center}
+
+\entry{Preface}{}
+
+I am a Computer Engineering student at Istanbul Ayd{\i}n University, and this is
+a record of the software I have designed and shipped.
+
+Most of it came from one job. During a gap year I took an internship at Applab
+in Doha that turned into fourteen months of production work for enterprise
+clients, and it taught me what the gap is between code that runs and code that
+keeps running. The platform I worked on was used by real people at scale, and
+the failure handling around it mattered as much as the features did.
+
+Outside of work I build systems to understand them: a retrieval-augmented
+chatbot over university documentation, a PDF tool that picked up a contributor
+from outside, and analysis of turbine engine data because the dataset was
+interesting. Where a project is unfinished or was not continued, I have said so.
+
+\entry{Al Jazeera: AI Video Platform}{2025--2026}
+
+My main body of work at \textbf{Applab}, and by some distance the largest system
+I have worked on. The platform takes an uploaded video, strips silence and
+filler words, re-transcribes it, and produces a translated video with subtitles.
+I was the primary author of the backend: the API service, the asynchronous job
+worker, and the projects API.
+
+\textbf{Architecture.} An event-driven pipeline on \textbf{Azure Container Apps}.
+A \textbf{Quart} API running under Hypercorn writes a state document to
+\textbf{Cosmos DB} and pushes a message onto \textbf{Azure Storage Queues}. A
+second, ingress-disabled container polls the queue and dispatches the work, then
+writes status back to Cosmos. The two services scale on different signals: the
+API on concurrent HTTP requests, the worker on queue depth.
+
+\textbf{Media and AI.} I integrated \textbf{Azure Cognitive Services Speech}
+using the fast transcription endpoint, and the Video Translation API, which I
+migrated to a newer API version. Transcription covers \textbf{14 locales}, with
+automatic fallback to \textbf{Azure OpenAI Whisper} for anything outside that
+set. Translation and analysis run against \textbf{GPT-4o}.
+
+\textbf{The hard parts.} Long-running media work fails in ways that are not
+obvious. I built poison-message routing so a job that will never succeed stops
+blocking the queue, a bounded retry loop with backoff around the translation
+lifecycle, and per-action state logging so a stuck job can be traced. I also
+wrote the subtitle alignment logic, including WebVTT handling that uses
+half-open interval arithmetic so adjacent cues which merely touch at a boundary
+do not get merged into one.
+
+Deduplication of filler words is done through the model's structured output
+rather than free text: transcript word arrays are batched and passed with a
+schema the API is constrained to, at zero temperature, with concurrency capped
+by a semaphore so a long transcript cannot exhaust the rate limit.
+
+\entry{General Authority of Customs: AI Chatbot}{2025--2026}
+
+An enterprise AI chatbot built from scratch for a government client, on
+\textbf{FastAPI} and \textbf{Semantic Kernel}. Retrieval runs through
+\textbf{Azure AI Search} with vector search for semantic document lookup rather
+than keyword matching, and I wrote the conversation history layer myself rather
+than taking it from a framework, which meant owning how context is trimmed and
+carried between turns.
+
+\entry{Invest Qatar: Document Generation}{2026}
+
+A backend that turns AI-generated structured JSON into formatted \textbf{DOCX}
+documents. The team's assumption was that this needed an external service; I
+built it in-process with Python file I/O instead, at roughly \textbf{30\,ms per
+document}, which removed a network dependency and a per-document cost from the
+pipeline.
+
+\entry{University RAG Chatbot}{2025}
+
+A retrieval-augmented chatbot answering questions over Istanbul Ayd{\i}n
+University's documentation. \textbf{LangChain} with OpenAI embeddings and
+\textbf{MongoDB Atlas Vector Search} for retrieval, and a companion
+\textbf{Selenium} scraper that walked the university site and extracted
+\textbf{184 documents} from a 200-entry sitemap.
+
+The part I would point at is the ingest pipeline. Rather than rebuilding the
+index on every run, it content-hashes each page and diffs against what is
+already stored, so only pages that actually changed are inserted, updated or
+deleted. The site changes constantly and most of it does not change at all; this
+makes re-ingesting cheap instead of an event.
+
+\entry{TIPOT: PDF Organising Tool}{2024--2026}
+
+A web application for reordering and merging PDF pages, built with
+\textbf{Flask} and \textbf{PyMuPDF} and shipped as a Docker image with a
+compose file. It is the project I am most glad I put online: an outside
+contributor found it, used it, and submitted a pull request that I reviewed and
+merged. Maintaining something other people depend on, and integrating someone
+else's work into it, taught me more than the code did.
+
+\entry{Aircraft Engine Trend Analysis}{2026}
+
+Analysis of multi-model turbine engine trend data for the 747, 767, 777 and 787
+in Python. I worked through exhaust gas temperature, fuel flow, and N1 and N2
+vibration signatures, comparing behaviour across the fleet and over time, and
+wrote up what the correlations suggested about wear, sensor bias and thermal
+drift. It started as a dataset I found interesting and turned into an exercise
+in not over-reading a trend line.
+
+\entry{Smaller Projects}{}
+
+\begin{itemize}
+    \item \textbf{v01d.dev} --- Personal site and technical blog, hand-built with Hugo and maintained since 2021, including write-ups of hardware work.
+    \item \textbf{deltastack.dev} --- Landing site for a student engineering team; Next.js, React and Tailwind. Sole author.
+    \item \textbf{table2csv} --- Converts the university course-schedule site into printable and Google Calendar CSV, with a manual-paste fallback for pages that block automation.
+    \item \textbf{LAN Scanner} --- Threaded network ping sweep, implemented in both C++ and Python.
+\end{itemize}
+
+\vspace{8pt}
+\hrule
+\vspace{6pt}
+
+\textbf{Toolchain.} Python, Go, C, TypeScript. Azure: Container Apps, Cosmos DB,
+Blob and Queue Storage, Cognitive Services, Azure OpenAI, AI Search. FastAPI,
+Quart, Semantic Kernel, LangChain. Docker, Linux. Cosmos DB, MongoDB, Postgres,
+pandas. Git.
+
+\end{document}
