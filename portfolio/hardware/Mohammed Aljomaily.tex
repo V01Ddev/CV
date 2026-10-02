@@ -1,3 +1,15 @@
+% ============================================================================
+%  HARDWARE PORTFOLIO -- hardware projects only
+%  Siblings, under portfolio/:
+%    ../software/   software only
+%    ../general/    both
+%    ../baykar/     hardware-led, written for a Baykar application
+%  Images are shared, one level up in ../img/
+%
+%  Build from inside this directory:
+%      pdflatex "Mohammed Aljomaily.tex"
+% ============================================================================
+
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[T1]{fontenc}
@@ -7,10 +19,8 @@
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 
-% Float placement tuning. Defaults let LaTeX dump queued figures onto a sparse
-% page of their own and leave gaps at page bottoms. These tell it to prefer
-% putting figures on pages that also carry text, and to only build a dedicated
-% figure page when it would be almost completely full.
+% Float placement tuning: prefer figures on pages that also carry text, and
+% only build a dedicated figure page when it would be almost completely full.
 \renewcommand{\topfraction}{0.92}
 \renewcommand{\bottomfraction}{0.92}
 \renewcommand{\textfraction}{0.06}
@@ -23,8 +33,6 @@
 \exhyphenpenalty=1200
 \emergencystretch=1.5em
 
-
-
 \newcommand{\entry}[2]{%
   \vspace{6pt}%
   {\Large\bfseries #1}\hfill{\itshape\small #2}\par
@@ -35,7 +43,7 @@
 
 \begin{center}
     {\LARGE \textbf{Mohammed Aljomaily}}\\[3pt]
-    {\large Portfolio}\\[6pt]
+    {\large Hardware Portfolio}\\[6pt]
     {\small Computer Engineering Student \textbar{} Embedded Systems, PCB Design \& RF}\\[3pt]
     {\small Beylikd\"uz\"u, Istanbul, Turkey \textbar{} +90 535 273 6199 \textbar{}
     \href{mailto:mohammedaljomaily06@gmail.com}{mohammedaljomaily06@gmail.com}}\\[2pt]
@@ -44,19 +52,16 @@
 
 \entry{Preface}{}
 
-My name is Mohammed Aljomaily. I am a Computer Engineering student at Istanbul
-Ayd{\i}n University, and I am applying for an internship at Baykar.
+I am a Computer Engineering student at Istanbul Ayd{\i}n University, and this is
+a record of the hardware I have designed, built and flown.
 
 I came into engineering through software, somewhat by accident. During a gap
 year I took an internship at Applab in Doha, and it turned into fourteen months
-of real work: I built backend services for an AI video platform used by Al
-Jazeera, and later an AI chatbot for the General Authority of Customs. It was
-serious work and I am proud of it. But it was never the part of engineering I
-went looking for. The thing I actually did with my own time was different. I was
-designing circuit boards, etching them at my kitchen table, soldering them, and
-flying what I had built.
-
-That is the work I want to do properly.
+of backend work for an AI video platform used by Al Jazeera. It was serious work
+and I am proud of it, but it was never the part of engineering I went looking
+for. The thing I actually did with my own time was different: designing circuit
+boards, etching them at my kitchen table, soldering them, and flying what I had
+built. This document is that work.
 
 Over the past year I have designed and hand-etched my own PCBs at home, because
 paying for fabrication and shipping to Turkey did not make sense for the size of
@@ -71,18 +76,6 @@ find it, and I use it in my own boards. I keep a written preflight checklist for
 my aircraft, because I would rather catch a loose propeller on the bench than in
 the air.
 
-Baykar is one of a small number of places where the thing I do for my own
-interest is the thing the company does at scale. I want to take problems and
-make real-world solutions that combine both hardware and software.
-
-I am not arriving with only coursework behind me. I can take a design from a
-schematic to a board I can hold in my hand, and I have done that several times.
-I work in C and C++ on ESP32 and ESP8266, in KiCad for boards and FreeCAD for
-mechanical parts, and I am comfortable at a bench with a soldering iron and a
-multimeter. I also know how to write software that keeps running after the demo,
-which I learned the hard way on systems that real people depended on.
-
-The rest of this document is a record of what I have designed, built and flown.
 Almost everything here was made at a desk at home, including the circuit boards
 themselves. Where a project is unfinished I have said so.
 
@@ -106,7 +99,7 @@ sound pack and 3D-printed stick ends for the radio.
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.38\textwidth]{img/drone.jpg}
+\includegraphics[width=0.38\textwidth]{../img/drone.jpg}
 \caption{The finished 5-inch build.}
 \end{figure}
 
@@ -133,22 +126,22 @@ footprints and the fabrication.
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.35\textwidth]{img/rf-transfer.jpg}
-\includegraphics[width=0.25\textwidth]{img/rf-board.jpg}\hspace{1.5em}%
+\includegraphics[width=0.35\textwidth]{../img/rf-transfer.jpg}
+\includegraphics[width=0.25\textwidth]{../img/rf-board.jpg}\hspace{1.5em}%
 \caption{The first revision: toner transferred onto copper, and the same board assembled.}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.31\textwidth]{img/rf-etched.jpg}\hspace{1em}%
-\includegraphics[width=0.31\textwidth]{img/rf-final.jpg}
+\includegraphics[width=0.31\textwidth]{../img/rf-etched.jpg}\hspace{1em}%
+\includegraphics[width=0.31\textwidth]{../img/rf-final.jpg}
 \caption{The final revision after etching, and the finished board in use.}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.17\textwidth]{img/rf-fcu.png}\hspace{2.5em}%
-\includegraphics[width=0.17\textwidth]{img/rf-bcu.png}
+\includegraphics[width=0.17\textwidth]{../img/rf-fcu.png}\hspace{2.5em}%
+\includegraphics[width=0.17\textwidth]{../img/rf-bcu.png}
 \caption{Front and back copper layers exported from KiCad. These are the etch artwork.}
 \end{figure}
 
@@ -167,7 +160,7 @@ could not render smoothly enough to be useful as an instrument.
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.30\textwidth]{img/telemetry.jpg}
+\includegraphics[width=0.30\textwidth]{../img/telemetry.jpg}
 \caption{The telemetry board.}
 \end{figure}
 
@@ -187,7 +180,7 @@ working through the fault.
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.38\textwidth]{img/logic-gates.jpg}
+\includegraphics[width=0.38\textwidth]{../img/logic-gates.jpg}
 \caption{The gate circuits on a breadboard, before committing to the PCB.}
 \end{figure}
 
@@ -241,39 +234,19 @@ open-source base. I stopped there when the university term started.
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.40\textwidth]{img/router-uart.jpg}
+\includegraphics[width=0.40\textwidth]{../img/router-uart.jpg}
 \caption{Capturing the boot log over UART.}
 \end{figure}
-
-\entry{Software Work}{2025--2026}
-
-My professional experience is in software, and it is where I learned what
-production actually means.
-
-At \textbf{Applab} in Doha I was the primary author of the backend for
-\textbf{Al Jazeera's} AI video editing and translation platform: a Quart API, an
-asynchronous job worker, and the queueing between them on Azure Container Apps,
-Cosmos DB and Storage Queues. I integrated Azure Cognitive Services and Azure
-OpenAI for transcription and translation across 14 locales, and built the
-failure handling (poison-message routing, bounded retry, per-action logging)
-that a long-running pipeline needs. Separately I built an AI chatbot for the
-\textbf{General Authority of Customs} on FastAPI, Semantic Kernel and Azure AI
-Search.
-
-Outside work, I built a retrieval-augmented chatbot over university
-documentation using LangChain and MongoDB Atlas Vector Search, with an
-incremental ingest pipeline that hashes each page so only what changed gets
-reprocessed. I also maintain \textbf{TIPOT}, a PDF organising tool that has
-received and merged a pull request from an outside contributor.
 
 \vspace{8pt}
 \hrule
 \vspace{6pt}
 
-\textbf{Toolchain.} C and C++ on ESP32/ESP8266, Python. KiCad 10 for schematic
-capture and PCB layout, including custom footprint authoring. FreeCAD for
-mechanical design, FDM printing for parts. SPI, I\textsuperscript{2}C, UART, PWM
-and ADC at the hardware level; nRF24L01, ESP-NOW, ExpressLRS, Bluetooth and IR
-for radio. Bench work with a soldering iron, multimeter and serial telemetry.
+\textbf{Toolchain.} C and C++ on ESP32 and ESP8266, and Python for host-side
+tooling. KiCad 9/10 for schematic capture and PCB layout, including custom
+symbol and footprint authoring. FreeCAD for mechanical design, FDM printing for
+parts. SPI, I\textsuperscript{2}C, UART, PWM and ADC at the hardware level;
+nRF24L01, ESP-NOW, ExpressLRS, Bluetooth and IR for radio. Bench work with a
+soldering iron, multimeter and serial telemetry.
 
 \end{document}
