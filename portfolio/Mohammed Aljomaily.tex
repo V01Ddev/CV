@@ -26,6 +26,8 @@
 \exhyphenpenalty=1200
 \emergencystretch=1.5em
 
+
+
 \newcommand{\entry}[2]{%
   \vspace{6pt}%
   {\large\bfseries #1}\hfill{\itshape\small #2}\par
@@ -73,16 +75,9 @@ find it, and I use it in my own boards. I keep a written preflight checklist for
 my aircraft, because I would rather catch a loose propeller on the bench than in
 the air.
 
-% ---------------------------------------------------------------------------
-%  REWRITE THIS PARAGRAPH IN YOUR OWN WORDS.
-%  This is the only part I cannot write for you, and it is the part a reader
-%  will actually remember. Two or three honest sentences about why Baykar
-%  specifically, and what you want to work on there.
-% ---------------------------------------------------------------------------
 Baykar is one of a small number of places where the thing I do for my own
-interest is the thing the company does at scale. \textit{[REWRITE: say in your
-own words why Baykar, and what area you want to work in.]}
-% ---------------------------------------------------------------------------
+interest is the thing the company does at scale. I want to take problems and
+make real-world solutions that combine both hardware and software.
 
 I am not arriving with only coursework behind me. I can take a design from a
 schematic to a board I can hold in my hand, and I have done that several times.
@@ -114,14 +109,21 @@ Alongside the airframe I built out the rest of the workflow, including GyroFlow
 stabilisation for footage from a GoPro HERO7 with ND filters, and a custom EdgeTX
 sound pack and 3D-printed stick ends for the radio.
 
-% ===========================================================================
-\entry{Dual-Transceiver ESP32 RF Board}{2026}
+\begin{center}
+\centering
+\includegraphics[width=0.38\textwidth]{img/drone.jpg}\\[4pt]
+{\small\itshape The finished 5-inch build.}
+\end{center}
 
-A two-layer board I designed in \textbf{KiCad} and then fabricated by hand at
-home: an \textbf{ESP32 DevKit V1} carrying \textbf{two nRF24L01+PA+LNA}
-transceivers, each on its own SPI bus (HSPI and VSPI) so both radios can operate
-independently, plus an SSD1306 OLED for status and an optional TP4056 charging
-circuit for a Li-Ion cell. The finished board is 64.14 $\times$ 77.47\,mm.
+% ===========================================================================
+\entry{Dual-Transceiver ESP32 Jammer Board}{2026}
+
+A two-layer ESP32 jammer board I designed in \textbf{KiCad} for educational study
+of 2.4\,GHz protocols, and then fabricated by hand at home: an \textbf{ESP32
+DevKit V1} carrying \textbf{two nRF24L01+PA+LNA} transceivers, each on its own
+SPI bus (HSPI and VSPI) so both radios operate independently, plus an SSD1306
+OLED for status and an optional TP4056 charging circuit for a Li-Ion cell. The
+finished board is 64.14 $\times$ 77.47\,mm.
 
 I did not use a fabrication house. Shipping to Turkey plus the cost of a local
 service made no sense for boards this size, so I generate the artwork, transfer
@@ -136,18 +138,24 @@ engineering work on my side was the board, the schematic capture, the custom
 footprints and the fabrication.
 
 % Floats, so the surrounding prose can fill pages instead of leaving gaps.
-\begin{figure}[htbp]
+\begin{center}
 \centering
-\includegraphics[width=0.55\textwidth]{img/rf-board.jpg}\\[4pt]
+\includegraphics[width=0.40\textwidth]{img/rf-board.jpg}\\[4pt]
 {\small\itshape The fabricated board. Bare etched substrate, no solder mask, assembled by hand.}
-\end{figure}
+\end{center}
 
-\begin{figure}[htbp]
+\begin{center}
 \centering
-\includegraphics[width=0.22\textwidth]{img/rf-fcu.png}\hspace{2.5em}%
-\includegraphics[width=0.22\textwidth]{img/rf-bcu.png}\\[4pt]
+\includegraphics[width=0.34\textwidth]{img/rf-transfer.jpg}\\[4pt]
+{\small\itshape Toner transferred onto the copper, before etching.}
+\end{center}
+
+\begin{center}
+\centering
+\includegraphics[width=0.17\textwidth]{img/rf-fcu.png}\hspace{2.5em}%
+\includegraphics[width=0.17\textwidth]{img/rf-bcu.png}\\[4pt]
 {\small\itshape Front and back copper layers, exported from KiCad. These are the etch artwork.}
-\end{figure}
+\end{center}
 
 % ===========================================================================
 \entry{Flight Telemetry \& Attitude Indicator}{2026}
@@ -163,6 +171,12 @@ drawing a live artificial horizon from the incoming telemetry. I started it in
 Pygame and migrated it to QML partway through, because the original approach
 could not render smoothly enough to be useful as an instrument.
 
+\begin{center}
+\centering
+\includegraphics[width=0.38\textwidth]{img/telemetry.jpg}\\[4pt]
+{\small\itshape The telemetry board.}
+\end{center}
+
 % ===========================================================================
 \entry{Discrete Transistor Logic Gates}{2026}
 
@@ -177,6 +191,12 @@ transistors means reasoning about base current, saturation and voltage levels
 directly. I designed the schematic, routed the two-layer board with a ground
 plane, and fabricated the first revision. It is currently under debug, and I am
 working through the fault.
+
+\begin{center}
+\centering
+\includegraphics[width=0.38\textwidth]{img/logic-gates.jpg}\\[4pt]
+{\small\itshape The gate circuits on a breadboard, before committing to the PCB.}
+\end{center}
 
 % ===========================================================================
 \entry{RC Aircraft \& Radio Link}{2025--2026}
@@ -219,6 +239,22 @@ helped me most came from other people doing the same thing.
 I also model and print mechanical parts, from enclosures for the boards above to
 a reversible USB power modification for a FlySky i6X transmitter that fits into
 the battery compartment without altering the case.
+
+% ===========================================================================
+\entry{Router Firmware Reverse Engineering}{2026}
+
+I took a Xiaomi router apart to understand how it boots. I located the UART
+header on the board and connected to it to capture the boot log, which is the
+most direct way to see what a device does before any of its own software takes
+over. The console turned out to be locked, so I moved to the flash instead and
+extracted the firmware image, which showed the firmware was built on an
+open-source base. I stopped there when the university term started.
+
+\begin{center}
+\centering
+\includegraphics[width=0.40\textwidth]{img/router-uart.jpg}\\[4pt]
+{\small\itshape Capturing the boot log over UART.}
+\end{center}
 
 % ===========================================================================
 \entry{Software Work}{2025--2026}

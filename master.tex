@@ -95,8 +95,12 @@ with a Mamba MK4 F722 flight controller, F40 V2 motors, and DJI O4 Lite video on
 6S. Configured Betaflight and the ExpressLRS 2.4\,GHz control link, and authored
 the aircraft's written preflight checklist.
 
-\subsection*{Dual-Transceiver ESP32 RF Board \hfill 2026}
-% [HW]
+\subsection*{Dual-Transceiver ESP32 Jammer Board \hfill 2026}
+% [HW] -- An educational RF jamming board. That is what it is; say so plainly.
+% [HW] -- The engineering substance is the board, not the firmware.
+% NOTE: always frame as educational study of RF. Never imply operation or use.
+% RAW: Photographed across three revisions (V0 transfer stage, V1 assembled,
+% RAW: V2 finished) in ~/Downloads/Project Photos/.
 % RAW: ESP32 DevKit V1 (DOIT). 2x nRF24L01+PA+LNA, one per SPI bus (HSPI+VSPI),
 % RAW: deliberately staggered sweeps. 2x 100uF bulk caps. SSD1306 0.96" I2C OLED
 % RAW: @0x3C using his own published footprint. 2x test points. Optional TP4056
@@ -111,10 +115,12 @@ the aircraft's written preflight checklist.
 % CHECK: The two-layer decision is a good story -- you chose it, discovered it was
 % CHECK: near-impossible to etch at home, then redesigned the vias larger and
 % CHECK: respun. That's an engineering iteration narrative, not a line item.
-Designed and hand-fabricated a 2-layer ESP32 RF board in KiCad, carrying two
-nRF24L01+PA+LNA transceivers on independent SPI buses. Authored custom
-footprints, routed all DRC-clean, and reworked via geometry specifically for
-home etching after finding the original two-layer layout impractical to produce.
+Designed and hand-fabricated a 2-layer ESP32 jammer board in KiCad for
+educational study of 2.4\,GHz protocols, carrying two nRF24L01+PA+LNA
+transceivers on independent SPI buses so both radios run independently. Authored
+custom footprints, routed all DRC-clean, and reworked via geometry specifically
+for home etching after finding the original two-layer layout impractical to
+produce.
 % NOTE: firmware is adapted, NOT original -- do not claim otherwise.
 Integrated open-source firmware for full compatibility with the upstream
 ESP32-BlueJammer project rather than rolling a custom stack.
@@ -193,6 +199,20 @@ Designed a BLE HID gamepad on ESP32 with a custom KiCad schematic, PCB, and
 Published a KiCad symbol and footprint library for the SSD1306 0.96" I2C OLED
 module, converted to native KiCad 9 format with correct CC BY-NC-SA attribution.
 Adopted into my own board designs.
+
+\subsection*{Router Firmware Reverse Engineering \hfill 2026}
+% [HW]
+% RAW: Xiaomi router. Opened the case, located the UART header on the board and
+% RAW: connected to it to capture boot logs. The UART console turned out to be
+% RAW: locked, so he pivoted to extracting the firmware image from flash.
+% RAW: Analysis showed the firmware was built on an open-source base.
+% RAW: Stopped there -- university term started. July-August 2026 (photo EXIF).
+% CHECK: Genuine hardware RE end to end: teardown, UART, flash extraction.
+% CHECK: Directly relevant to embedded and defence work, and photographed.
+Opened a Xiaomi router, located the UART header on the board and connected to it
+to capture boot logs. With the UART console locked, pivoted to extracting the
+firmware image from flash, and found the firmware was built on an open-source
+base. Not continued past that initial investigation.
 
 \subsection*{Hardware Fabrication \& Mechanical}
 % [HW]
