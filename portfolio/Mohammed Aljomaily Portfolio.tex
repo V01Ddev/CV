@@ -1,15 +1,3 @@
-% ============================================================================
-%  PORTFOLIO AND PREFACE -- single submission, for the Baykar internship
-%
-%  Images live in ./img/ so build this from inside the portfolio/ directory:
-%      pdflatex "Mohammed Aljomaily.tex"
-%
-%  Source of truth for facts is ../master.tex.
-%
-%  !! The paragraph tagged [REWRITE THIS] has to be in your own words. It is
-%  !! the only part of this document I could not write for you.
-% ============================================================================
-
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[T1]{fontenc}
@@ -19,7 +7,7 @@
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{2pt}
 \setlength{\parskip}{5pt}
 \pagestyle{empty}
 \hyphenpenalty=1200
@@ -30,14 +18,14 @@
 
 \newcommand{\entry}[2]{%
   \vspace{6pt}%
-  {\large\bfseries #1}\hfill{\itshape\small #2}\par
-  \vspace{2pt}\hrule\vspace{4pt}%
+  {\Large\bfseries #1}\hfill{\itshape\small #2}\par
+  \vspace{3pt}\hrule\vspace{4pt}%
 }
 
 \begin{document}
 
 \begin{center}
-    {\LARGE \textbf{Mohammed Aljomaily}}\\[4pt]
+    {\LARGE \textbf{Mohammed Aljomaily}}\\[3pt]
     {\large Portfolio}\\[6pt]
     {\small Computer Engineering Student \textbar{} Embedded Systems, PCB Design \& RF}\\[3pt]
     {\small Beylikd\"uz\"u, Istanbul, Turkey \textbar{} +90 535 273 6199 \textbar{}
@@ -45,7 +33,6 @@
     {\small \href{https://v01d.dev}{v01d.dev} \textbar{} \href{https://github.com/V01Ddev}{github.com/V01Ddev}}
 \end{center}
 
-% ===========================================================================
 \entry{Preface}{}
 
 My name is Mohammed Aljomaily. I am a Computer Engineering student at Istanbul
@@ -90,7 +77,6 @@ The rest of this document is a record of what I have designed, built and flown.
 Almost everything here was made at a desk at home, including the circuit boards
 themselves. Where a project is unfinished I have said so.
 
-% ===========================================================================
 \entry{5-Inch FPV Quadcopter}{2026}
 
 A complete 5-inch FPV aircraft, built from parts and configured from scratch:
@@ -111,11 +97,10 @@ sound pack and 3D-printed stick ends for the radio.
 
 \begin{center}
 \centering
-\includegraphics[width=0.38\textwidth]{img/drone.jpg}\\[4pt]
+\includegraphics[width=0.38\textwidth]{img/drone.jpg}\\[3pt]
 {\small\itshape The finished 5-inch build.}
 \end{center}
 
-% ===========================================================================
 \entry{Dual-Transceiver ESP32 Jammer Board}{2026}
 
 A two-layer ESP32 jammer board I designed in \textbf{KiCad} for educational study
@@ -139,25 +124,25 @@ footprints and the fabrication.
 
 \begin{center}
 \centering
-\includegraphics[width=0.40\textwidth]{img/rf-board.jpg}\\[4pt]
-{\small\itshape The fabricated board. Bare etched substrate, no solder mask, assembled by hand.}
+\includegraphics[width=0.30\textwidth]{img/rf-transfer.jpg}
+\includegraphics[width=0.30\textwidth]{img/rf-board.jpg}\\[3pt]
+{\small\itshape Left: first version, toner transferred onto copper. Right: the same board after assembly.}
 \end{center}
 
 \begin{center}
 \centering
-\includegraphics[width=0.31\textwidth]{img/rf-transfer.jpg}\hspace{2em}%
-\includegraphics[width=0.31\textwidth]{img/rf-etched.jpg}\\[4pt]
-{\small\itshape Left: toner transferred onto the copper. Right: the same board after etching.}
+\includegraphics[width=0.31\textwidth]{img/rf-etched.jpg}
+\includegraphics[width=0.31\textwidth]{img/rf-final.jpg}\\[3pt]
+{\small\itshape Left: final board revision, after etching. Right: the finished board in use.}
 \end{center}
 
 \begin{center}
 \centering
 \includegraphics[width=0.17\textwidth]{img/rf-fcu.png}\hspace{2.5em}%
-\includegraphics[width=0.17\textwidth]{img/rf-bcu.png}\\[4pt]
+\includegraphics[width=0.17\textwidth]{img/rf-bcu.png}\\[3pt]
 {\small\itshape Front and back copper layers, exported from KiCad. These are the etch artwork.}
 \end{center}
 
-% ===========================================================================
 \entry{Flight Telemetry \& Attitude Indicator}{2026}
 
 An ESP32 telemetry system for small aircraft, pairing an \textbf{MS5611}
@@ -173,11 +158,10 @@ could not render smoothly enough to be useful as an instrument.
 
 \begin{center}
 \centering
-\includegraphics[width=0.38\textwidth]{img/telemetry.jpg}\\[4pt]
+\includegraphics[width=0.30\textwidth]{img/telemetry.jpg}\\[3pt]
 {\small\itshape The telemetry board.}
 \end{center}
 
-% ===========================================================================
 \entry{Discrete Transistor Logic Gates}{2026}
 
 A board that implements \textbf{AND, NOT, OR and NAND} gates from individual
@@ -194,11 +178,10 @@ working through the fault.
 
 \begin{center}
 \centering
-\includegraphics[width=0.38\textwidth]{img/logic-gates.jpg}\\[4pt]
+\includegraphics[width=0.38\textwidth]{img/logic-gates.jpg}\\[3pt]
 {\small\itshape The gate circuits on a breadboard, before committing to the PCB.}
 \end{center}
 
-% ===========================================================================
 \entry{RC Aircraft \& Radio Link}{2025--2026}
 
 Two fixed-wing designs, drawn and built from first principles rather than from a
@@ -214,7 +197,6 @@ firmware myself: four analog channels encoded over \textbf{ESP-NOW} at 20\,Hz,
 driving servos on the receiving end, with a failsafe that recentres every channel
 if the link is lost for three seconds.
 
-% ===========================================================================
 \entry{Published KiCad Library}{2026}
 
 The SSD1306 0.96-inch OLED module is one of the most common parts in hobby
@@ -226,7 +208,6 @@ the original \textbf{CC BY-NC-SA} attribution preserved as its licence requires.
 It is not a file sitting in a drawer. I use this footprint in my own boards,
 including the RF board above.
 
-% ===========================================================================
 \entry{Home PCB Fabrication}{ongoing}
 
 Everything with a circuit board in this portfolio was made by hand, and the
@@ -240,7 +221,6 @@ I also model and print mechanical parts, from enclosures for the boards above to
 a reversible USB power modification for a FlySky i6X transmitter that fits into
 the battery compartment without altering the case.
 
-% ===========================================================================
 \entry{Router Firmware Reverse Engineering}{2026}
 
 I took a Xiaomi router apart to understand how it boots. I located the UART
@@ -252,11 +232,10 @@ open-source base. I stopped there when the university term started.
 
 \begin{center}
 \centering
-\includegraphics[width=0.40\textwidth]{img/router-uart.jpg}\\[4pt]
+\includegraphics[width=0.40\textwidth]{img/router-uart.jpg}\\[3pt]
 {\small\itshape Capturing the boot log over UART.}
 \end{center}
 
-% ===========================================================================
 \entry{Software Work}{2025--2026}
 
 My professional experience is in software, and it is where I learned what
@@ -278,12 +257,11 @@ incremental ingest pipeline that hashes each page so only what changed gets
 reprocessed. I also maintain \textbf{TIPOT}, a PDF organising tool that has
 received and merged a pull request from an outside contributor.
 
-% ===========================================================================
 \vspace{8pt}
 \hrule
 \vspace{6pt}
 
-\textbf{Toolchain.} C and C++ on ESP32/ESP8266, Python. KiCad 9/10 for schematic
+\textbf{Toolchain.} C and C++ on ESP32/ESP8266, Python. KiCad 10 for schematic
 capture and PCB layout, including custom footprint authoring. FreeCAD for
 mechanical design, FDM printing for parts. SPI, I\textsuperscript{2}C, UART, PWM
 and ADC at the hardware level; nRF24L01, ESP-NOW, ExpressLRS, Bluetooth and IR
