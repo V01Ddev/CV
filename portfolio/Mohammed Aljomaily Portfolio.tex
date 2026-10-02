@@ -7,6 +7,15 @@
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 
+% Float placement tuning. Defaults let LaTeX dump queued figures onto a sparse
+% page of their own and leave gaps at page bottoms. These tell it to prefer
+% putting figures on pages that also carry text, and to only build a dedicated
+% figure page when it would be almost completely full.
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.92}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.9}
+
 \setlength{\parindent}{2pt}
 \setlength{\parskip}{5pt}
 \pagestyle{empty}
@@ -95,11 +104,11 @@ Alongside the airframe I built out the rest of the workflow, including GyroFlow
 stabilisation for footage from a GoPro HERO7 with ND filters, and a custom EdgeTX
 sound pack and 3D-printed stick ends for the radio.
 
-\begin{center}
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.38\textwidth]{img/drone.jpg}\\[3pt]
-{\small\itshape The finished 5-inch build.}
-\end{center}
+\includegraphics[width=0.38\textwidth]{img/drone.jpg}
+\caption{The finished 5-inch build.}
+\end{figure}
 
 \entry{Dual-Transceiver ESP32 Jammer Board}{2026}
 
@@ -122,26 +131,26 @@ from scratch. I wanted my hardware to be fully compatible with it, so the
 engineering work on my side was the board, the schematic capture, the custom
 footprints and the fabrication.
 
-\begin{center}
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.30\textwidth]{img/rf-transfer.jpg}
-\includegraphics[width=0.30\textwidth]{img/rf-board.jpg}\\[3pt]
-{\small\itshape Left: first version, toner transferred onto copper. Right: the same board after assembly.}
-\end{center}
+\includegraphics[width=0.25\textwidth]{img/rf-board.jpg}\hspace{1.5em}%
+\includegraphics[width=0.35\textwidth]{img/rf-transfer.jpg}
+\caption{The first revision: toner transferred onto copper, and the same board assembled.}
+\end{figure}
 
-\begin{center}
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.31\textwidth]{img/rf-etched.jpg}
-\includegraphics[width=0.31\textwidth]{img/rf-final.jpg}\\[3pt]
-{\small\itshape Left: final board revision, after etching. Right: the finished board in use.}
-\end{center}
+\includegraphics[width=0.31\textwidth]{img/rf-etched.jpg}\hspace{1em}%
+\includegraphics[width=0.31\textwidth]{img/rf-final.jpg}
+\caption{The final revision after etching, and the finished board in use.}
+\end{figure}
 
-\begin{center}
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.17\textwidth]{img/rf-fcu.png}\hspace{2.5em}%
-\includegraphics[width=0.17\textwidth]{img/rf-bcu.png}\\[3pt]
-{\small\itshape Front and back copper layers, exported from KiCad. These are the etch artwork.}
-\end{center}
+\includegraphics[width=0.17\textwidth]{img/rf-bcu.png}
+\caption{Front and back copper layers exported from KiCad. These are the etch artwork.}
+\end{figure}
 
 \entry{Flight Telemetry \& Attitude Indicator}{2026}
 
@@ -156,11 +165,11 @@ drawing a live artificial horizon from the incoming telemetry. I started it in
 Pygame and migrated it to QML partway through, because the original approach
 could not render smoothly enough to be useful as an instrument.
 
-\begin{center}
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.30\textwidth]{img/telemetry.jpg}\\[3pt]
-{\small\itshape The telemetry board.}
-\end{center}
+\includegraphics[width=0.30\textwidth]{img/telemetry.jpg}
+\caption{The telemetry board.}
+\end{figure}
 
 \entry{Discrete Transistor Logic Gates}{2026}
 
@@ -176,11 +185,11 @@ directly. I designed the schematic, routed the two-layer board with a ground
 plane, and fabricated the first revision. It is currently under debug, and I am
 working through the fault.
 
-\begin{center}
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.38\textwidth]{img/logic-gates.jpg}\\[3pt]
-{\small\itshape The gate circuits on a breadboard, before committing to the PCB.}
-\end{center}
+\includegraphics[width=0.38\textwidth]{img/logic-gates.jpg}
+\caption{The gate circuits on a breadboard, before committing to the PCB.}
+\end{figure}
 
 \entry{RC Aircraft \& Radio Link}{2025--2026}
 
@@ -230,11 +239,11 @@ over. The console turned out to be locked, so I moved to the flash instead and
 extracted the firmware image, which showed the firmware was built on an
 open-source base. I stopped there when the university term started.
 
-\begin{center}
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.40\textwidth]{img/router-uart.jpg}\\[3pt]
-{\small\itshape Capturing the boot log over UART.}
-\end{center}
+\includegraphics[width=0.40\textwidth]{img/router-uart.jpg}
+\caption{Capturing the boot log over UART.}
+\end{figure}
 
 \entry{Software Work}{2025--2026}
 
